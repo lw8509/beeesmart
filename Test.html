@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino Datenanzeige (Demo)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #data-display {
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 0 0 20px;
+        }
+        .data-item {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #333;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="data-display">
+    <h1>Live-Daten vom Arduino (Demo)</h1>
+    <p class="data-item" id="weight">Gewicht: Lade Daten...</p>
+    <p class="data-item" id="temperature">Temperatur: Lade Daten...</p>
+    <p class="data-item" id="co2">CO₂-Gehalt: Lade Daten...</p>
+    <p class="data-item" id="beeActivity">Bienenaktivität: Lade Daten...</p>
+    <button onclick="fetchData()">Aktualisieren</button>
+</div>
+
+<script>
+    // Demo-Funktion: Simuliert das Abrufen von Gewicht, Temperatur, CO₂-Gehalt und Bienenaktivität
+    function fetchData() {
+        // Simulierte Werte für Gewicht, Temperatur, CO₂-Gehalt und Bienenaktivität
+        const simulatedWeight = (Math.random() * 50 + 10).toFixed(2); // Zufallswert in kg (10-60 kg)
+        const simulatedTemperature = (Math.random() * 30 + 15).toFixed(1); // Zufallswert in °C (15-45°C)
+        const simulatedCO2 = (Math.random() * 400 + 400).toFixed(0); // Zufallswert in ppm (400-800 ppm)
+        const simulatedBeeActivity = Math.floor(Math.random() * 100) + 1; // Zufallswert von 1 bis 100 (Aktivität)
+
+        // Werte in die HTML-Elemente einfügen
+        document.getElementById('weight').textContent = `Gewicht: ${simulatedWeight} kg`;
+        document.getElementById('temperature').textContent = `Temperatur: ${simulatedTemperature} °C`;
+        document.getElementById('co2').textContent = `CO₂-Gehalt: ${simulatedCO2} ppm`;
+        document.getElementById('beeActivity').textContent = `Bienenaktivität: ${simulatedBeeActivity}%`;
+    }
+
+    // Daten automatisch beim Laden der Seite laden
+    window.onload = fetchData;
+</script>
+
+</body>
+</html>
